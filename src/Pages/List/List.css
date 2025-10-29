@@ -116,6 +116,7 @@
   height: 200px;
   overflow: hidden;
   background: #f5f5f5;
+  position: relative;
 }
 
 .food-image img {
@@ -129,6 +130,23 @@
   transform: scale(1.05);
 }
 
+/* Category Badge on Image */
+.food-category-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: linear-gradient(135deg, rgba(255, 82, 82, 0.95) 0%, rgba(255, 6, 6, 0.95) 100%);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: capitalize;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  backdrop-filter: blur(4px);
+}
+
 .food-details {
   padding: 20px;
 }
@@ -137,10 +155,41 @@
   font-size: 20px;
   font-weight: 700;
   color: #1a1a1a;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* Category Label with Icon */
+.food-category-label {
+  font-size: 13px;
+  color: #ff5252;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: capitalize;
+}
+
+.category-icon {
+  font-size: 16px;
+}
+
+/* Prep Time Label with Icon */
+.food-preptime-label {
+  font-size: 12px;
+  color: #666;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: #f5f5f5;
+  border-radius: 12px;
+  width: fit-content;
 }
 
 .food-description {
@@ -157,27 +206,21 @@
 
 .food-info {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   margin-top: 16px;
   padding-top: 16px;
   border-top: 1px solid #f0f0f0;
 }
 
-.food-category {
-  background: linear-gradient(135deg, #ff5252 0%, #ff0606 100%);
-  color: white;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: capitalize;
-}
-
 .food-price {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   color: #ff5252;
+  background: linear-gradient(135deg, #ff5252 0%, #ff0606 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Delete Button */
@@ -244,6 +287,11 @@
     height: 180px;
   }
 
+  .food-category-badge {
+    font-size: 11px;
+    padding: 5px 12px;
+  }
+
   .food-details {
     padding: 16px;
   }
@@ -252,8 +300,17 @@
     font-size: 18px;
   }
 
+  .food-category-label {
+    font-size: 12px;
+  }
+
+  .food-preptime-label {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+
   .food-price {
-    font-size: 18px;
+    font-size: 20px;
   }
 }
 
@@ -276,5 +333,25 @@
 
   .food-image {
     height: 200px;
+  }
+
+  .food-category-badge {
+    font-size: 10px;
+    padding: 4px 10px;
+    top: 8px;
+    left: 8px;
+  }
+
+  .food-category-label {
+    font-size: 11px;
+  }
+
+  .food-preptime-label {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+
+  .food-price {
+    font-size: 18px;
   }
 }

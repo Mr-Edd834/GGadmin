@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Add.css'
-import { ImagePlus, Loader2 } from 'lucide-react'
+import { ImagePlus, Loader2, Clock, Minus } from 'lucide-react'
 import LimitedTextarea from '../../Components/Limitwords'
 import api, { foodAPI } from '../../utils/api'
 import { toast } from 'react-toastify'
@@ -11,10 +11,15 @@ const Add = () => {
     description: '',
     price: '',
     category: '',
+    prepTime: '',
   });
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [prepTimeMode, setPrepTimeMode] = useState('absolute'); // 'absolute' or 'range'
+  const [prepTimeMin, setPrepTimeMin] = useState('');
+  const [prepTimeMax, setPrepTimeMax] = useState('');
+  const [prepTimeAbsolute, setPrepTimeAbsolute] = useState('');
 
   const handlePriceChange = (e) => {
     const value = e.target.value.replace(/[^0-9]/g, '');
@@ -42,6 +47,32 @@ const Add = () => {
     setFormData({ ...formData, description: value });
   };
 
+  const handlePrepTimeChange = (type, value) => {
+    const numValue = value.replace(/[^0-9]/g, '');
+    
+    if (type === 'absolute') {
+      setPrepTimeAbsolute(numValue);
+      const prepTime = numValue ? `${numValue} min` : '';
+      setFormData({ ...formData, prepTime });
+    } else if (type === 'min') {
+      setPrepTimeMin(numValue);
+      const prepTime = numValue && prepTimeMax ? `${numValue}-${prepTimeMax} min` : '';
+      setFormData({ ...formData, prepTime });
+    } else if (type === 'max') {
+      setPrepTimeMax(numValue);
+      const prepTime = prepTimeMin && numValue ? `${prepTimeMin}-${numValue} min` : '';
+      setFormData({ ...formData, prepTime });
+    }
+  };
+
+  const handlePrepTimeModeChange = (mode) => {
+    setPrepTimeMode(mode);
+    setPrepTimeMin('');
+    setPrepTimeMax('');
+    setPrepTimeAbsolute('');
+    setFormData({ ...formData, prepTime: '' });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -63,6 +94,7 @@ const Add = () => {
       data.append('description', formData.description);
       data.append('price', Number(formData.price));
       data.append('category', formData.category);
+      data.append('prepTime', formData.prepTime);
       data.append('image', image);
 
       const response = await foodAPI.addFood(data);
@@ -75,9 +107,13 @@ const Add = () => {
           description: '',
           price: '',
           category: '',
+          prepTime: '',
         });
         setImage(null);
         setImagePreview(null);
+        setPrepTimeMin('');
+        setPrepTimeMax('');
+        setPrepTimeAbsolute('');
         // Reset file input
         document.getElementById('image').value = '';
       } else {
@@ -152,6 +188,71 @@ const Add = () => {
                value={formData.description}
                onChange={handleDescriptionChange}
              />
+         </div>
+
+         <div className='add-product-preptime'>
+             <label>
+               <Clock size={16} style={{ display: 'inline', marginRight: '6px' }} />
+               Preparation Time
+             </label>
+             
+             <div className="preptime-mode-toggle">
+               <button
+                 type="button"
+                 className={`mode-button ${prepTimeMode === 'absolute' ? 'active' : ''}`}
+                 onClick={() => handlePrepTimeModeChange('absolute')}
+               >
+                 <Clock size={16} />
+                 <span>Absolute</span>
+               </button>
+               <button
+                 type="button"
+                 className={`mode-button ${prepTimeMode === 'range' ? 'active' : ''}`}
+                 onClick={() => handlePrepTimeModeChange('range')}
+               >
+                 <Minus size={16} />
+                 <span>Range</span>
+               </button>
+             </div>
+
+             {prepTimeMode === 'absolute' ? (
+               <div className="preptime-input-group">
+                 <input
+                   type="text"
+                   placeholder="e.g., 30"
+                   value={prepTimeAbsolute}
+                   onChange={(e) => handlePrepTimeChange('absolute', e.target.value)}
+                   className="preptime-input"
+                 />
+                 <span className="preptime-unit">minutes</span>
+               </div>
+             ) : (
+               <div className="preptime-range-group">
+                 <input
+                   type="text"
+                   placeholder="Min"
+                   value={prepTimeMin}
+                   onChange={(e) => handlePrepTimeChange('min', e.target.value)}
+                   className="preptime-input"
+                 />
+                 <Minus size={20} color="#999" />
+                 <input
+                   type="text"
+                   placeholder="Max"
+                   value={prepTimeMax}
+                   onChange={(e) => handlePrepTimeChange('max', e.target.value)}
+                   className="preptime-input"
+                 />
+                 <span className="preptime-unit">minutes</span>
+               </div>
+             )}
+
+             {formData.prepTime && (
+               <p className="preptime-display">
+                 <Clock size={16} />
+                 Prep Time: {formData.prepTime}
+               </p>
+             )}
          </div>
 
          <div className='add-product-price'>

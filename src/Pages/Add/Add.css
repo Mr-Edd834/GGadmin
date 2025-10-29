@@ -139,6 +139,101 @@
   padding-right: 40px;
 }
 
+/* Prep Time Section */
+.add-product-preptime {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.preptime-mode-toggle {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.mode-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  background: white;
+  color: #666;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mode-button:hover {
+  border-color: #ff5252;
+  background: #fff5f5;
+}
+
+.mode-button.active {
+  border-color: #ff5252;
+  background: linear-gradient(135deg, #ff5252 0%, #ff0606 100%);
+  color: white;
+}
+
+.preptime-input-group,
+.preptime-range-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  background: #fafafa;
+  transition: all 0.3s ease;
+}
+
+.preptime-input-group:focus-within,
+.preptime-range-group:focus-within {
+  border-color: #ff5252;
+  background: white;
+}
+
+.preptime-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 15px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.preptime-input:focus {
+  outline: none;
+  border-color: #ff5252;
+  box-shadow: 0 0 0 3px rgba(255, 82, 82, 0.1);
+}
+
+.preptime-unit {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  white-space: nowrap;
+}
+
+.preptime-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ff5252;
+  padding: 12px 16px;
+  background: #fff5f5;
+  border-radius: 8px;
+  margin: 4px 0 0 0;
+}
+
 /* Price Input */
 .price-input-wrapper {
   display: flex;
@@ -261,6 +356,16 @@
 
   .add-image-upload label {
     height: 200px;
+  }
+
+  .mode-button {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+
+  .preptime-input {
+    font-size: 14px;
+    padding: 8px 12px;
   }
 }
 

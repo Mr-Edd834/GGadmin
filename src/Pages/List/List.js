@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './List.css'
-import { Utensils, Trash2, Loader2 } from 'lucide-react'
+import { Utensils, Trash2, Loader2, Clock } from 'lucide-react'
 import { foodAPI } from '../../utils/api'
 import { toast } from 'react-toastify'
 
@@ -75,12 +75,22 @@ const List = () => {
               <div key={item._id} className="food-card">
                 <div className="food-image">
                   <img src={foodAPI.getImageURL(item.image)} alt={item.name} />
+                  <span className="food-category-badge">{item.category}</span>
                 </div>
                 <div className="food-details">
                   <h3>{item.name}</h3>
+                  <p className="food-category-label">
+                    <Utensils size={14} />
+                    {item.category}
+                  </p>
+                  {item.prepTime && (
+                    <p className="food-preptime-label">
+                      <Clock size={14} />
+                      {item.prepTime}
+                    </p>
+                  )}
                   <p className="food-description">{item.description}</p>
                   <div className="food-info">
-                    <span className="food-category">{item.category}</span>
                     <span className="food-price">KSH {item.price}</span>
                   </div>
                 </div>
