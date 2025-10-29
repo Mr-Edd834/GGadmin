@@ -1,6 +1,6 @@
 import React from 'react'
 import './Sidebar.css'
-import { PlusCircle, ClipboardList, Utensils } from 'lucide-react'
+import { PlusCircle, ClipboardList, Utensils, PackageCheck } from 'lucide-react'
 import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
@@ -21,6 +21,11 @@ const Sidebar = () => {
             <NavLink to="/orders" className="sidebar-options">
               <ClipboardList size={20} color="orange" />
               <p>Your Orders</p>
+          </NavLink>
+
+          <NavLink to="/completed-orders" className="sidebar-options">
+              <PackageCheck size={20} color="orange" />
+              <p>Completed Orders</p>
           </NavLink>
         </div>
       </div>
