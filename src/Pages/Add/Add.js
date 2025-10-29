@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './Add.css'
 import { ImagePlus, Loader2 } from 'lucide-react'
 import LimitedTextarea from '../../Components/Limitwords'
-import { foodAPI } from '../../utils/api'
+import api, { foodAPI } from '../../utils/api'
 import { toast } from 'react-toastify'
 
 const Add = () => {
@@ -61,7 +61,7 @@ const Add = () => {
       const data = new FormData();
       data.append('name', formData.name);
       data.append('description', formData.description);
-      data.append('price', formData.price);
+      data.append('price', Number(formData.price));
       data.append('category', formData.category);
       data.append('image', image);
 

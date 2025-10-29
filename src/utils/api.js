@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 // Backend URL - Update this to match your backend port
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const API_URL = process.env.REACT_APP_API_URL;
 
 // Create axios instance with default config
-const api = axios.create({
+const api= axios.create({
   baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json',
