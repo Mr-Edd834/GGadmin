@@ -1,0 +1,92 @@
+.limited-textarea-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.limit-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.limited-textarea {
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 15px;
+  resize: vertical;
+  outline: none;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  min-height: 100px;
+  line-height: 1.6;
+}
+
+.limited-textarea:focus {
+  border-color: #ff5252;
+  box-shadow: 0 0 0 3px rgba(255, 82, 82, 0.1);
+}
+
+.limited-textarea.limit-hit {
+  border-color: #ff4b4b;
+  background: #fff5f5;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ffa500 0%, #ff5252 100%);
+  transition: width 0.3s ease-in-out, background 0.3s ease;
+  border-radius: 10px;
+}
+
+.progress-fill.full {
+  background: linear-gradient(90deg, #ff4b4b 0%, #d32f2f 100%);
+}
+
+.word-count {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.word-count.limit-text {
+  color: #ff4b4b;
+  font-weight: 600;
+  animation: pulse 0.5s ease;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .limited-textarea {
+    font-size: 14px;
+    padding: 12px 14px;
+  }
+
+  .word-count {
+    font-size: 13px;
+  }
+}

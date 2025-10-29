@@ -1,0 +1,89 @@
+.orders-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 30px;
+  background: #f8f9fa;
+  min-height: calc(100vh - 120px);
+}
+
+.orders-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.orders-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.orders-header p {
+  font-size: 16px;
+  color: #666;
+}
+
+.orders-content {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.orders-empty {
+  text-align: center;
+  color: #999;
+}
+
+.orders-empty-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.orders-empty h3 {
+  font-size: 24px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.orders-empty p {
+  font-size: 16px;
+  color: #999;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .orders-container {
+    padding: 20px 16px;
+  }
+
+  .orders-header h1 {
+    font-size: 24px;
+  }
+
+  .orders-content {
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .orders-container {
+    padding: 16px 12px;
+  }
+
+  .orders-header h1 {
+    font-size: 20px;
+  }
+
+  .orders-content {
+    padding: 20px 16px;
+  }
+}
+
