@@ -5,6 +5,7 @@
   padding: 40px 30px;
   background: #f8f9fa;
   min-height: calc(100vh - 120px);
+  font-family: 'varela round', sans-serif;
 }
 
 .add-header {
