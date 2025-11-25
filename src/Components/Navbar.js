@@ -4,8 +4,8 @@ import './Navbar.css'
 const Navbar = () => {
   return (
     <div className="navbar">
-        <img className="logo" src="/govendor-logo (1).png" alt="logo" />
-        <img className="profile" src="gogrub-logo.png" alt="profile pic" />
+        <img onClick={Navigate('/')} className="logo" src="/govendor-logo (1).png" alt="logo" />
+        <img onClick={Navigate('/')} className="profile" src="gogrub-logo.png" alt="profile pic" />
 
     </div>
   )
