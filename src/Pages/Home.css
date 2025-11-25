@@ -13,3 +13,10 @@
 #govendor{
     margin-top: -30px;
 }
+
+@media (max-width: 480x) {
+    .welcome-message{
+        margin-left: 10px;
+        font-size: 30px;
+    }
+}
