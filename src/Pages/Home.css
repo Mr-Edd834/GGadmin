@@ -1,0 +1,15 @@
+.welcome-message{
+    text-align: center;
+    font-family:valeria round, quicksand, sans-serif;
+    color: rgb(63, 91, 119);
+    font-size: 40px;
+    margin-left: 300px;
+    margin-top: 100px;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+#govendor{
+    margin-top: -30px;
+}
